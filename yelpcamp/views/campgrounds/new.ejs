@@ -1,47 +1,34 @@
 <% layout('layouts/boilerplate')%>
-<h1 class="text-center">New Campground</h1>
-<form action="/campgrounds" method="POST" class="validate-form" novalidate>
-    <div class="form-group mb-3">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="campground[title]" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-        <div class="invalid-feedback">
-            Please provide a valid Title
-        </div>
+
+<div class="row">
+  <h1 class="text-center">New Campground</h1>
+  <div class="col-6 offset-3">
+    <form action="/campgrounds" method="POST" class="validated-form" novalidate>
+      <div class="form-group mb-3">
+          <label class="form-label" for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="campground[title]" required>
+      </div>
+      <div class="form-group mb-3">
+          <label class="form-label" for="location">Location</label>
+          <input type="text" class="form-control" id="location" name="campground[location]" required>
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label" for="image">Image URL</label>
+        <input type="text" class="form-control" id="image" name="campground[image]" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="price">Campground Price</label>
+      <div class="input-group">
+        <span class="input-group-text" id="price-label">$</span>
+        <input type="text" class="form-control" placeholder="0.00" id="price" name="campground[price]" required>
+      </div>
     </div>
     <div class="form-group mb-3">
-        <label for="location">Location</label>
-        <input type="text" class="form-control" id="location" name="campground[location]" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-        <div class="invalid-feedback">
-            Please provide a valid Location
-        </div>
-    </div>
-    <button class="mb-3 btn btn-primary">Add Campground</button>
-</form>
-<a href="/campgrounds">All Campgrounds</a>
-<script>
-    (function () {
-  'use strict'
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.validate-form')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-</script>
+      <label class="form-label" for="description">Description</label>
+      <textarea type="text" class="form-control" id="description" name="campground[description]" required></textarea>
+  </div>
+      <button class="mb-3 btn btn-success">Add Campground</button>
+  </form>
+  <a href="/campgrounds">All Campgrounds</a>
+  </div>
+</div>
